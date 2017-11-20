@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Registration Form</title>
+</head>
+<body>
+    <div class="col-md-3">
+    </div>
+    <div class="container col-md-4">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h2>Please register</h2>
+        <p {{type1}} name="validation">Validation error, email already exists</p>
+        <form action='/wall_post' method='post'>
+            <div class="form-group">
+            <label for="fname">First Name:</label>
+            <input type='text' class="form-control" name='fname'>
+            </div>
+            <div class="form-group">
+            <label for="lname">Last Name:</label>
+            <input type='text' class="form-control" name='lname'>
+            </div>
+            <div class="form-group">
+            <label for="email">Email:</label>
+            <input type='text' class="form-control" name='email'>
+            </div>
+            <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" name="password">
+            </div>
+            <div class="form-group">
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" class="form-control" name="confirm_password">
+            </div>
+            <input type='submit' class="btn btn-default" value='Submit'>
+        </form>
+        <h2>Please login if already registered</h2>
+        <form action='/login' method='post'>
+            <div class="form-group">
+            <label for="login_email">Email:</label>
+            <input type='text' class="form-control" name='login_email'>
+            </div>
+            <div class="form-group">
+            <label for="login_password">Password:</label>
+            <input type="password" class="form-control" name="login_password">
+            </div>
+            <input type='submit' class="btn btn-default" value='Login'>
+        </form>
+    </div>
+    
+</body>
+</html>

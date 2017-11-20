@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- linking a css style sheet -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        <title>Confirmation</title>
+    </head>
+    <body>
+        <h2>Coding Dojo Wall</h2>
+        <p>Welcome {{firstname}}</p>
+        <form action='/logout', method='post'>
+            <input type='submit' value='Log off'>
+        </form>
+        <br><br>
+        <form action='/postmessage' method='post'>
+            <label for="message">Post a message</label><br>
+            <textarea rows=10 cols=50 id="message_area" name="message"></textarea><br>
+            <input type='submit' value='Post a message'>
+        </form>
+        
+        {% for x in posts %}
+            <div>
+                <p class="author"> {{x.first_name}} {{x.last_name}}</p>
+                <p class="post">
+                    MESSAGE: {{x.message}}
+                </p>
+                {% for y in x.comments:%}
+                <div>
+                    <p class="commentname">NAME: {{y.first_name}} {{y.last_name}}</p>
+                    <p class="comment">
+                        COMMENT: {{y.comment}}
+                    </p>
+                </div>
+                
+                {% endfor %}
+                <form class="comment" action='/postcomment', method='post'>
+                    <label  for="message">Post a comment</label><br>
+                    <textarea  rows=10 cols=50 id="comment_area" name="comment"></textarea><br>
+                    <input type="hidden" name="message_id" value="{{x.id}}">
+                    <input type='submit' value='Comment'>
+                </form> 
+                <br><br>
+            </div>
+        {% endfor %}
+
+               
+    </body>
+</html>

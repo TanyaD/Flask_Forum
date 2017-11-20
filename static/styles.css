@@ -1,0 +1,25 @@
+h2{
+    display: inline-block;
+    margin-left: 500px;
+}
+
+.author{
+    MARGIN-BOTTOM: 0px;
+    color: blue;
+}
+
+.post{
+    margin-top: 2px;
+    margin-left: 0px;
+    color: blue;
+}
+
+.commentname{
+    margin-bottom: 0px;
+    margin-left: 50px;
+}
+.comment{
+    margin-top: 2px;
+    margin-bottom: 0px;
+    margin-left: 50px;
+}
